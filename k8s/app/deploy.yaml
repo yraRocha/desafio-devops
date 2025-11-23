@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: gblbjj/desafio-node-app:0.0.6
+          image: gblbjj/desafio-node-app:0.0.7
           env:
             - name: HOST
               value: mysql.default.svc.cluster.local
