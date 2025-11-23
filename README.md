@@ -41,7 +41,8 @@ kubectl get svc
 kubectl get ingress
 
 8. Como acessar
-Use o EXTERNAL-IP do service LoadBalancer: http://EXTERNAL-IP
+Use o EXTERNAL-IP do service LoadBalancer: http://EXTERNAL-IP caso use ingress
+
 
  
   
