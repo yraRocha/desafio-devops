@@ -1,19 +1,47 @@
 # Desafio Devops
 
-O projeto contém uma aplicação básica com Node, Ngnix e MySQL. 
+README – Migração do Docker Compose para Kubernetes
 
-A cada atualização da página, um novo registro será cadastrado no banco de dados e será mostrado na listagem, na mesma página.  
+1. O que existia no Docker Compose
+- MySQL com usuário, senha e database.
+- Aplicação Node.js rodando na porta 3000.
+- Tudo dentro de um único arquivo docker-compose.yml.
 
-O projeto contém algumas falhas e erros, analise e implemente as devidas correções.
+2. O que mudou no Kubernetes
+- Secrets para senhas.
+- ConfigMap para configs sem senha.
+- Deployments para criar containers.
+- Services para comunicação.
+- PersistentVolume + PVC para dados do MySQL.
+- Ingress / LoadBalancer para acesso externo.
 
-Se não entender algum conceito ou parte do problema, não é motivo para se preocupar! Queremos que faça o desafio até onde souber.
+3. Problemas corrigidos
+- Ingress usando IP.
+- NodePort sem acesso externo.
+- Credenciais erradas no MySQL.
 
-### O que deve ser feito? ### 
+4. Arquitetura final
+Ingress/LoadBalancer -> Node.js Service -> Node.js Deployment -> MySQL Service -> MySQL Deployment + PV/PVC.
 
- - ajustes que fazem todas as aplicações subirem e se comunicarem
- - clusterize esta aplicação para o Kubernetes, utilize o cluster de sua preferência mas não esqueça de fornecer o(s) manifesto(s) que criar 
- - um README contendo os seus pensamentos ao longo do projeto para identificação e correção dos erros
+5. Arquivos criados
+mysql-secret.yaml
+mysql-config.yaml
+mysql-deployment.yaml
+mysql-service.yaml
+node-deployment.yaml
+node-service.yaml
+ingress.yaml
 
-Faça um fork e realize commits ao longo do processo para que possamos entender o seu modo de pensar! :)
+6. Como subir
+kubectl apply -f .
+
+7. Como verificar
+kubectl get pods
+kubectl get svc
+kubectl get ingress
+
+8. Como acessar
+Use o EXTERNAL-IP do service LoadBalancer: http://EXTERNAL-IP
+
  
   
