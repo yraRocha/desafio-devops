@@ -1,6 +1,6 @@
 # Desafio Devops
 
-README – Migração do Docker Compose para Kubernetes
+Migração do Docker Compose para Kubernetes
 
 1. O que existia no Docker Compose
 - MySQL com usuário, senha e database.
